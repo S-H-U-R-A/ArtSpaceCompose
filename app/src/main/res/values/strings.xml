@@ -10,4 +10,7 @@
     <string name="naruto_year">Naruto (2020)</string>
     <string name="btn_previous">Previous</string>
     <string name="btn_next">Next</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>

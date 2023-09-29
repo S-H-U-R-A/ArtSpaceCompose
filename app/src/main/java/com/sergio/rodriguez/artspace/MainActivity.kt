@@ -46,6 +46,27 @@ import com.sergio.rodriguez.artspace.ui.theme.ArtSpaceTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+/*        val intent = intent
+
+        if(intent != null){
+            val extras = intent.extras
+            if(extras != null){
+                val widgetText = extras.getString("widgetText")
+                setContent {
+                    ArtSpaceTheme {
+                        // A surface container using the 'background' color from the theme
+                        Surface(
+                            modifier = Modifier.fillMaxSize(),
+                            color = MaterialTheme.colorScheme.background
+                        ) {
+                            ArtSpaceApp(modifier = Modifier.fillMaxSize())
+                        }
+                    }
+                }
+            }
+        }*/
+
         setContent {
             ArtSpaceTheme {
                 // A surface container using the 'background' color from the theme
@@ -66,14 +87,16 @@ fun ArtSpaceApp(
     modifier: Modifier = Modifier
 ) {
 
-    var currentStep:        Int by remember { mutableStateOf(0) }
+    var currentStep: Int by remember { mutableStateOf(0) }
 
-    var currentArtWork:     Int by remember { mutableStateOf(R.drawable.denji_face) }
-    var title:              Int by remember { mutableStateOf(R.string.denji) }
-    var subTitle:           Int by remember { mutableStateOf(R.string.denji_year) }
+    @DrawableRes var currentArtWork: Int by  remember { mutableStateOf(R.drawable.denji_face) }
+    @StringRes var title: Int by remember { mutableStateOf(R.string.denji) }
+    @StringRes var subTitle: Int by remember { mutableStateOf(R.string.denji_year) }
 
     Column(
-        modifier = modifier.fillMaxWidth().verticalScroll( rememberScrollState() ),
+        modifier = modifier
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -89,22 +112,25 @@ fun ArtSpaceApp(
         ButtonsControl(
             onPreviousClicked = {
                 if (currentStep > 0) currentStep -= 1
-                when(currentStep) {
+                when (currentStep) {
                     0 -> {
                         currentArtWork = R.drawable.denji_face
                         title = R.string.denji
                         subTitle = R.string.denji_year
                     }
+
                     1 -> {
                         currentArtWork = R.drawable.naruto_face
                         title = R.string.naruto
                         subTitle = R.string.naruto_year
                     }
+
                     2 -> {
                         currentArtWork = R.drawable.sanji_face
                         title = R.string.sanji
                         subTitle = R.string.sanji_year
                     }
+
                     3 -> {
                         currentArtWork = R.drawable.zero_two_face
                         title = R.string.zero_two
@@ -113,23 +139,26 @@ fun ArtSpaceApp(
                 }
             },
             onNextClicked = {
-                if(currentStep < 3) currentStep += 1
-                when(currentStep) {
+                if (currentStep < 3) currentStep += 1
+                when (currentStep) {
                     0 -> {
                         currentArtWork = R.drawable.denji_face
                         title = R.string.denji
                         subTitle = R.string.denji_year
                     }
+
                     1 -> {
                         currentArtWork = R.drawable.naruto_face
                         title = R.string.naruto
                         subTitle = R.string.naruto_year
                     }
+
                     2 -> {
                         currentArtWork = R.drawable.sanji_face
                         title = R.string.sanji
                         subTitle = R.string.sanji_year
                     }
+
                     3 -> {
                         currentArtWork = R.drawable.zero_two_face
                         title = R.string.zero_two
@@ -147,11 +176,12 @@ fun ArtWork(
     @DrawableRes currentArtWork: Int,
     modifier: Modifier = Modifier
 ) {
+
     Card(
         modifier = modifier.padding(20.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
         shape = RoundedCornerShape(4.dp)
-    ){
+    ) {
         Image(
             painter = painterResource(id = currentArtWork),
             contentDescription = null,
@@ -176,7 +206,7 @@ fun BodyContent(
             .fillMaxWidth()
             .padding(20.dp)
             .background(Color(0xFFecebf4)),
-    ){
+    ) {
         Text(
             modifier = Modifier
                 .fillMaxWidth()
@@ -208,7 +238,7 @@ fun ButtonsControl(
             .padding(28.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
 
-    ) {
+        ) {
         Button(
             onClick = {
                 onPreviousClicked()
