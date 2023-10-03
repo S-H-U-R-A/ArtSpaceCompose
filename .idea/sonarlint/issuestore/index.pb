@@ -3,7 +3,7 @@ D
 app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
 r
 Bapp/src/test/java/com/sergio/rodriguez/artspace/ExampleUnitTest.kt,c\b\cbae5a0256f93a264ac89bd515b76fde001be5ad
-Å
+ÔøΩ
 Qapp/src/androidTest/java/com/sergio/rodriguez/artspace/ExampleInstrumentedTest.kt,2\f\2f09ecee9a632a47d47b3f517c10c890b0924dbd
 o
 ?app/src/main/java/com/sergio/rodriguez/artspace/MainActivity.kt,9\b\9be88e3ffe8b9ce294d2630a4c1ffb43d42d9aeb
